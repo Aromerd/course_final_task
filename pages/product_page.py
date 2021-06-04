@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 
 
 class ProductPage(BasePage):
+
     def add_to_basket(self):
         self.should_be_add_to_basket_button()
         self.should_be_product_name()
@@ -27,6 +28,14 @@ class ProductPage(BasePage):
     def should_be_successful_alert_that_product_added_to_basket(self):
         assert self.is_element_present(*ProductPageLocators.SUCCESS_ADDED_TO_BASKET_ALERT), \
             "Successful alert that product added to basket is not presented"
+
+    def successful_alert_that_product_added_to_basket_is_not_presented(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_ADDED_TO_BASKET_ALERT),  \
+            "Success message is presented, but should not be"
+
+    def successful_alert_that_product_added_to_basket_is_disappeared(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_ADDED_TO_BASKET_ALERT), \
+            "Success message is presented, but should not be"
 
     def product_name_should_be_equal_with_name_in_successful_add_to_basket_alert(self):
         assert self.is_element_present(*ProductPageLocators.SUCCESS_ADDED_TO_BASKET_ALERT_PRODUCT_NAME), \
