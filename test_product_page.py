@@ -2,6 +2,7 @@ from .pages.main_page import MainPage
 from .pages.login_page import LoginPage
 from .pages.product_page import ProductPage
 from .pages.base_page import BasePage
+from .pages.basket_page import BasketPage
 import pytest
 
 
@@ -30,6 +31,7 @@ def test_guest_can_add_product_to_basket(browser, link):
     page.add_to_basket()
 
 
+@pytest.mark.xfail
 def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
     link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/studyguide-for-counter-hack-reloaded_205/"
     page = ProductPage(browser, link)
@@ -45,6 +47,7 @@ def test_guest_cant_see_success_message(browser):
     page.successful_alert_that_product_added_to_basket_is_not_presented()
 
 
+@pytest.mark.xfail
 def test_message_disappeared_after_adding_product_to_basket(browser):
     link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/studyguide-for-counter-hack-reloaded_205/"
     page = ProductPage(browser, link)
@@ -67,3 +70,13 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
     page.go_to_login_page()
     page = LoginPage(browser, browser.current_url)
     page.should_be_login_url()
+
+
+def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+    page = BasketPage(browser, link)
+    page.open()
+    page.should_be_basket_link()
+    page.go_to_basket_page()
+    page.check_that_basket_is_empty()
+    page.check_message_that_basket_is_empty()
