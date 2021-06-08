@@ -1,12 +1,12 @@
-from selenium.webdriver.common.by import By
 from .base_page import BasePage
-from .locators import BasePageLocators, BasketPageLocators
+from .locators import BasketPageLocators
 
 
 class BasketPage(BasePage):
 
     def check_that_basket_is_empty(self):
-        assert self.is_not_element_present(*BasketPageLocators.BASKET_ITEMS), "Items is presented, but should not be"
+        assert self.is_not_element_present(*BasketPageLocators.BASKET_ITEMS), \
+            "Items is presented, but should not be"
 
     def check_message_that_basket_is_empty(self):
         assert self.is_element_present(*BasketPageLocators.EMPTY_BASKET_MESSAGE), \

@@ -1,6 +1,5 @@
 from .base_page import BasePage
 from .locators import ProductPageLocators
-from selenium.webdriver.common.by import By
 
 
 class ProductPage(BasePage):
@@ -9,7 +8,6 @@ class ProductPage(BasePage):
         self.should_be_add_to_basket_button()
         self.should_be_product_name()
         self.click_on_add_to_basket_button()
-        self.solve_quiz_and_get_code()
         self.should_be_successful_alert_that_product_added_to_basket()
         self.product_name_should_be_equal_with_name_in_successful_add_to_basket_alert()
         self.product_price_should_be_equal_with_price_in_successful_basket_have_new_cost_alert()
