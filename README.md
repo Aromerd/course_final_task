@@ -10,7 +10,7 @@ git clone https://github.com/Aromerd/course_final_task
 
 - #### Install missing packages:
 ~~~ 
-pip install -r requirements.txt
+pip install -r requirements
 ~~~
 - #### Start with command:
 ~~~ 
